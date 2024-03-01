@@ -8,7 +8,7 @@ function product(nums) {
 /** longest: return the length of the longest word in an array of words. */
 
 function longest(words) {
-  if(words.length <= 1) return words[0];
+  if(words.length <= 1) return words[0].length;
   if (words[0].length > words[1].length) { words.splice(1, 1); return longest(words); }
   else return longest(words.slice(1, words.length));
 }
@@ -17,16 +17,15 @@ function longest(words) {
 
 function everyOther(str) {
   if (str.length === 0) return '';
-  return str[1] + everyOther(str.slice(2));``
+  return str[0] + everyOther(str.slice(2));``
 }
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
 function isPalindrome(str) {
-  if(str.length === 1) return true;
-  let s = str.toLowerCase().replace(/[^a-z0-9+]+/gi, '');
-  if(s.charAt(0) === s.charAt(s.length - 1)) 
-    return isPalindrome(s.slice(1, -1))
+  if(str.length <= 1) return true;
+  if(str.toLowerCase().charAt(0) === str.toLowerCase().charAt(str.length - 1)) 
+    return isPalindrome(str.slice(1, -1))
   else return false;
 }
 
@@ -78,6 +77,7 @@ function binarySearch(arr, val) {
     return binarySearch(arr.slice(mid), val) || -1;
   }
 }
+
 
 module.exports = {
   product,
